@@ -24,21 +24,62 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT+'
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '3.+', changing: true
     }
 }
 
-apply plugin: 'net.minecraftforge.gradle.forge'
+apply plugin: 'net.minecraftforge.gradle'
 
 version = mod.version
 group = mod.group
 archivesBaseName = "$mod.name-$mod.minecraftVersion"
 
-minecraft {
-    version = "$mod.minecraftVersion-$mod.forgeVersion"
-    mappings = "$mod.mappingsVersion"
+dependencies {
+    minecraft "net.minecraftforge:forge:$mod.minecraftVersion-$mod.forgeVersion"
+}
 
-    runDir = "run"
+minecraft {
+    mappings channel: 'snapshot', version: "$mod.mappingsVersion"
+
+    runs {
+        client {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+            property 'forge.logging.console.level', 'debug'
+
+            mods {
+                "$mod.id" {
+                    source sourceSets.main
+                }
+            }
+        }
+
+        server {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+            property 'forge.logging.console.level', 'debug'
+
+            mods {
+                "$mod.id" {
+                    source sourceSets.main
+                }
+            }
+        }
+
+        data {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+            property 'forge.logging.console.level', 'debug'
+
+            args '--mod', mod.id, '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+
+            mods {
+                "$mod.id" {
+                    source sourceSets.main
+                }
+            }
+        }
+    }
 }
 
 sourceSets.main.resources {
