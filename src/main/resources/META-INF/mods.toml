@@ -1,0 +1,22 @@
+modLoader="javafml"
+loaderVersion="${mod.forgeVersionRange}"
+#issueTrackerURL="https://"
+license="${mod.license}"
+
+[[mods]]
+modId="${mod.id}"
+version="${mod.version}"
+displayName="${mod.name}"
+#updateJSONURL="https://"
+#displayURL="https://"
+#logoFile=""
+#credits=""
+authors="${mod.authors}"
+description="${mod.description}"
+
+[[dependencies.${mod.id}]]
+    modId="forge"
+    mandatory=true
+    versionRange="${mod.forgeVersionRange}"
+    ordering="NONE"
+    side="BOTH"

@@ -2,6 +2,6 @@ package fr.lnzl.dfta;
 
 import net.minecraftforge.fml.common.Mod;
 
-@Mod(modid = "dfta")
+@Mod("dfta")
 public class DragonFreeTippedArrows {
 }
