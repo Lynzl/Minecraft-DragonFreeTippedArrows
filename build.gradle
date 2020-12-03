@@ -1,0 +1,50 @@
+buildscript {
+
+    ext {
+        mod = [
+                id               : 'dfta',
+                group            : 'fr.lnzl.dfta',
+                name             : 'DragonFreeTippedArrows',
+                version          : '1.0.0-alpha',
+                minecraftVersion : '1.12',
+                forgeVersion     : '14.21.1.2387',
+                forgeVersionRange: '[14,)',
+                mappingsVersion  : 'snapshot_20170624',
+                packFormat       : '3',
+
+                authors          : 'Lynzel',
+                description      : 'Dragon Free Tipped Arrows',
+                license          : 'MPL-2.0 License',
+        ]
+    }
+
+    repositories {
+        maven { url 'https://files.minecraftforge.net/maven' }
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT+'
+    }
+}
+
+apply plugin: 'net.minecraftforge.gradle.forge'
+
+version = mod.version
+group = mod.group
+archivesBaseName = "$mod.name-$mod.minecraftVersion"
+
+minecraft {
+    version = "$mod.minecraftVersion-$mod.forgeVersion"
+    mappings = "$mod.mappingsVersion"
+
+    runDir = "run"
+}
+
+sourceSets.main.resources {
+    srcDir 'src/generated/resources'
+}
+
+processResources {
+    expand project.properties
+}
