@@ -7,8 +7,8 @@ buildscript {
                 name             : 'DragonFreeTippedArrows',
                 version          : '8.0.0-alpha',
                 minecraftVersion : '1.15',
-                forgeVersion     : '28.2.23',
-                forgeVersionRange: '[28,)',
+                forgeVersion     : '29.0.4',
+                forgeVersionRange: '[29,)',
                 mappingsVersion  : '20190719-1.14.3',
                 packFormat       : '4',
 
