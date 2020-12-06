@@ -5,7 +5,7 @@ buildscript {
                 id               : 'dfta',
                 group            : 'fr.lnzl.dfta',
                 name             : 'DragonFreeTippedArrows',
-                version          : '13.0.0-alpha',
+                version          : '13.0.0',
                 minecraftVersion : '1.16.3',
                 forgeVersion     : '34.1.42',
                 forgeVersionRange: '[34,)',
